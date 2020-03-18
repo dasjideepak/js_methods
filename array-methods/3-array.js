@@ -1,3 +1,5 @@
+// Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array. 
+// (indexOf)
 var words = [
   'crab',
   'poison',
@@ -12,11 +14,19 @@ var words = [
   'bring'
 ];
 
-// Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array. 
-// (indexOf)
+function uniqueArray(words) {
+  let newArr = [];
+  for (word of words) { 
+    if (newArr.indexOf(word) == -1) { 
+      newArr.push(word);
+    }
+  }
+  return newArr;
+}
+console.log(uniqueArray(words));
 
 
-
+// Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. Return true if it exists, otherwise, return false. Don't use indexOf for this one.
 var words2 = [
   'machine',
   'subset',
@@ -28,11 +38,18 @@ var words2 = [
   'disobedience'
 ];
 
-// Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. Return true if it exists, otherwise, return false. Don't use indexOf for this one.
+function doesWordExist(words, search) {
+  for (word of words) {
+    if (search === word) { 
+      return true;
+    }
+	}
+	return false;
+}
+console.log(doesWordExist(words2, 'deepak'));
 
 
-
-
+// Write a function howManyTimes that will take in an array of words as one argument, and a word to search for as the other. The function will return the number of times that word appears in the array.
 var words3 = [
   'machine',
   'matter',
@@ -47,11 +64,16 @@ var words3 = [
   'matter'
 ];
 
-
-// Write a function howManyTimes that will take in an array of words as one argument, and a word to search for as the other. The function will return the number of times that word appears in the array.
-
-
-
+function howManyTimes(words, search) {
+  let count = 0;
+	for (word of words) {
+		if (search === word) {
+      count++;
+		}
+	}
+	return count;
+}
+console.log(howManyTimes(words3, "matter"));
 
 
 // Using the reduce() method, how would you sum up the population of every country except China?
@@ -74,6 +96,13 @@ let data = [
   }
 ]
 
+console.log(data.reduce(function(a, b) { 
+  if (b.country !== 'China') { 
+    a += b.pop;
+  }
+  return a;
+}, 0));
+
 
 // Use reduce method and summorize the collection like
 // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
@@ -91,7 +120,15 @@ const fruitBasket = [
   'fig'
 ];
 
-
+var obj = new Object();
+var res = (fruitBasket.reduce((acc, elem) => {
+  if(Object.keys(obj).indexOf(elem) !=-1)
+    obj[elem]++;
+  else
+    obj[elem] = 1;
+  return obj;
+}, obj));
+console.log(res);
 
 // Bonus Question (Solve only if you have time)
 var matrix = [
